@@ -90,3 +90,16 @@ ENV/
 
 # SQLite3
 db.sqlite3
+
+
+# Django collected static + uploads
+/staticfiles/
+/media/
+
+# Environment variants
+.env.local
+.env.*
+!.env.example
+
+# Docker local overrides
+docker-compose.override.yml

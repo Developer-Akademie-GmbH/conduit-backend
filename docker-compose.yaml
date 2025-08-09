@@ -1,0 +1,71 @@
+# version: '3.8'
+
+# services:
+#   backend:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     ports:
+#       - "8000:8000"
+#     volumes:
+#       - .:/app
+#     command: >
+#       gunicorn conduit.wsgi:application --bind 0.0.0.0:8000
+
+#   frontend:
+#     build:
+#       context: ../conduit-frontend
+#       dockerfile: Dockerfile
+#     ports:
+#       - "4000:80"
+
+# version: '3.8'
+
+# services:
+#   backend:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     ports:
+#       - "8000:8000"
+#     volumes:
+#       - .:/app
+#       - static_volume:/app/static
+#     command: >
+#       gunicorn conduit.wsgi:application --bind 0.0.0.0:8000
+
+#   frontend:
+#     build:
+#       context: ../conduit-frontend
+#       dockerfile: Dockerfile
+#     ports:
+#       - "4000:80"
+
+# volumes:
+#   static_volume:
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles
+    env_file:
+      - ./.env
+    command: >
+      gunicorn conduit.wsgi:application --bind 0.0.0.0:8000
+
+  frontend:
+    build:
+      context: ../conduit-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4000:80"
+
+volumes:
+  static_volume:
