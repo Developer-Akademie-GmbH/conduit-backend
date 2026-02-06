@@ -25,4 +25,6 @@ COPY . .
 
 EXPOSE 8000
 
+RUN python manage.py collectstatic --noinput
+
 CMD ["gunicorn", "conduit.wsgi:application", "--bind", "0.0.0.0:8000"]
