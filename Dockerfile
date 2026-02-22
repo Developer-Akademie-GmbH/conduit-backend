@@ -1,5 +1,5 @@
 # ---------- Builder ----------
-FROM python:3.10-slim AS builder
+FROM python:3.6-slim AS builder
 
 WORKDIR /app
 
@@ -13,7 +13,7 @@ RUN pip install --upgrade pip && pip install --prefix=/install -r requirements.t
 
 
 # ---------- Runtime ----------
-FROM python:3.10-slim
+FROM python:3.6-slim
 
 WORKDIR /app
 
