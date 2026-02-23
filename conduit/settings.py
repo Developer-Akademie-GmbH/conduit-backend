@@ -133,7 +133,8 @@ STATIC_ROOT = os.path.join (BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CORS_ALLOWED_ORIGINS = os.environ.get(
-    "CORS_ALLOWED_ORIGINS" = 'http://<your_ip>:8282/'
+    "CORS_ALLOWED_ORIGINS" 
+    "http://<your_ip>:8282/"
 ).split(",")
 
 # Tell Django about the custom `User` model we created. The string
