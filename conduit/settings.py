@@ -132,10 +132,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join (BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-CORS_ALLOWED_ORIGINS = os.environ.get(
-    "CORS_ALLOWED_ORIGINS" 
-    "http://<your_ip>:8282/"
-).split(",")
+cors_origins = os.getenv("CORS_ALLOWED_ORIGINS", "")
+CORS_ALLOWED_ORIGINS = cors_origins.split(",") if cors_origins else []
 
 # Tell Django about the custom `User` model we created. The string
 # `authentication.User` tells Django we are referring to the `User` model in
